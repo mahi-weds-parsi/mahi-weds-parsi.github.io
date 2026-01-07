@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     var insertAfter = nav;
+    var shownNavCount = 0;
     resolved.forEach(function (key) {
       var section = sectionMap[key];
       if (section) {
@@ -46,8 +47,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (item) {
           item.style.display = "";
           navList.appendChild(item);
+          shownNavCount += 1;
         }
       });
+      if (!shownNavCount) {
+        Object.keys(navMap).forEach(function (key) {
+          var item = navMap[key];
+          if (item) {
+            item.style.display = "";
+            navList.appendChild(item);
+          }
+        });
+      }
     }
   };
 

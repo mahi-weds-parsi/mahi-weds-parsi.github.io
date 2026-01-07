@@ -233,6 +233,13 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li.has-dropdown:hover a, .fh5co-nav ul li.has-dropdown:focus a {
   color: #fff;
 }
+.fh5co-nav ul li.has-dropdown:hover > .dropdown,
+.fh5co-nav ul li.has-dropdown:focus > .dropdown,
+.fh5co-nav ul li.has-dropdown:focus-within > .dropdown {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
 .fh5co-nav ul li.has-dropdown:hover .dropdown li a,
 .fh5co-nav ul li.has-dropdown:focus .dropdown li a {
   color: rgba(0, 0, 0, 0.85);
