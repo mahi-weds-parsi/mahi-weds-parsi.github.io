@@ -270,6 +270,12 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li.active > a {
   color: #fff !important;
 }
+.fh5co-nav ul li.has-dropdown .dropdown li.active > a {
+  color: #222 !important;
+}
+.fh5co-nav ul li.has-dropdown .dropdown li.active > a:hover {
+  color: #000 !important;
+}
 
 #fh5co-counter,
 #fh5co-event,
