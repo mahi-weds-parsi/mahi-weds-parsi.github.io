@@ -1,2 +1,2 @@
-# mahi-weds-parsi.github.io
+## mahi-weds-parsi.github.io
 Wedding Invitation
