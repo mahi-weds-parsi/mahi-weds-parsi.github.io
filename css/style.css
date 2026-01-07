@@ -923,22 +923,38 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 .mfp-arrow {
-  width: 46px;
-  height: 46px;
+  width: 54px;
+  height: 54px;
+  margin-top: -27px;
   opacity: 1;
   background: rgba(0, 0, 0, 0.45);
   border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .mfp-arrow:before,
 .mfp-arrow:after {
-  border-top-width: 16px;
-  border-bottom-width: 16px;
+  content: "";
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 0;
+}
+.mfp-arrow:after {
+  display: none;
+}
+.mfp-arrow:before {
+  border-style: solid;
+  border-width: 10px 12px;
 }
 .mfp-arrow-left:before {
-  border-right-color: #ffffff;
+  border-color: transparent #ffffff transparent transparent;
 }
 .mfp-arrow-right:before {
-  border-left-color: #ffffff;
+  border-color: transparent transparent transparent #ffffff;
 }
 #fh5co-gallery-list li.one-third {
   width: 32.3%;

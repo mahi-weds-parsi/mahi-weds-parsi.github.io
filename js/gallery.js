@@ -38,6 +38,39 @@ document.addEventListener("DOMContentLoaded", function () {
     return galleryDir + name;
   };
 
+  var initLightbox = function () {
+    if (
+      !window.jQuery ||
+      !window.jQuery.fn ||
+      !window.jQuery.fn.magnificPopup ||
+      list.getAttribute("data-popup-init")
+    ) {
+      return;
+    }
+    window.jQuery(list).magnificPopup({
+      delegate: "a.image-popup",
+      type: "image",
+      removalDelay: 300,
+      mainClass: "mfp-with-zoom",
+      gallery: {
+        enabled: true,
+        navigateByImgClick: true,
+        arrows: true,
+        tPrev: "Previous",
+        tNext: "Next"
+      },
+      zoom: {
+        enabled: true,
+        duration: 300,
+        easing: "ease-in-out",
+        opener: function (openerElement) {
+          return openerElement;
+        }
+      }
+    });
+    list.setAttribute("data-popup-init", "true");
+  };
+
   var parseDirectoryListing = function (htmlText) {
     var results = [];
     var doc = new DOMParser().parseFromString(htmlText, "text/html");
@@ -177,28 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (rest.length) {
       list.appendChild(createMoreItem(rest));
     }
-
-    if (window.jQuery && window.jQuery.fn && window.jQuery.fn.magnificPopup) {
-      if (!list.getAttribute("data-popup-init")) {
-        window.jQuery(list).magnificPopup({
-          delegate: "a.image-popup",
-          type: "image",
-          removalDelay: 300,
-          mainClass: "mfp-with-zoom",
-          gallery: {
-            enabled: true,
-            navigateByImgClick: true,
-            tPrev: "Previous",
-            tNext: "Next"
-          },
-          zoom: {
-            enabled: true,
-            duration: 300,
-            easing: "ease-in-out"
-          }
-        });
-        list.setAttribute("data-popup-init", "true");
-      }
-    }
+    initLightbox();
   });
 });
