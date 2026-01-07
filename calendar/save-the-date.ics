@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Mahi Parsi Wedding//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:mahi-parsi-wedding-20260219@wedding
+DTSTAMP:20240101T000000Z
+DTSTART;VALUE=DATE:20260219
+DTEND;VALUE=DATE:20260220
+SUMMARY:Mahi & Parsi Wedding
+DESCRIPTION:With love in our hearts\, we invite you to celebrate the wedding of Mahi & Parsi.
+LOCATION:Payal Garden\, Near Dhai Pedi\, Jaipur Road\, Alwar (Raj.)
+END:VEVENT
+END:VCALENDAR
