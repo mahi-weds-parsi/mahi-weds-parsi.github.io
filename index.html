@@ -48,7 +48,7 @@
 	<link rel="stylesheet" href="css/owl.theme.default.min.css">
 
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/style.css?v=2">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -68,24 +68,9 @@
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 text-left menu-1">
-					<ul>
-						<li class="active" data-nav-section="home"><a href="#fh5co-header">Home</a></li>
-						<li class="active" data-nav-section="gallery"><a href="#fh5co-gallery">Gallery</a></li>
-						<li class="active" data-nav-section="highlights"><a href="#fh5co-services">Highlights</a></li>
-						<li class="active" data-nav-section="groom-events"><a href="#fh5co-event-groom">Groom Events</a></li>
-						<li class="active" data-nav-section="bride-events"><a href="#fh5co-event-bride">Bride Events</a></li>
-					</ul>
-				</div>
-			</div>
-			
-		</div>
-	</nav>
 
-	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/bg.jpg);" data-stellar-background-ratio="0.5" data-section="home">
+
+	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/bg.webp);" data-stellar-background-ratio="0.5" data-section="home">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
@@ -117,7 +102,38 @@
 			</div>
 			<div class="row row-bottom-padded-md">
 				<div class="col-md-12">
-					<ul id="fh5co-gallery-list" data-gallery-dir="images/gallery/" data-gallery-json="images/gallery.json" data-gallery-initial="5"></ul>
+					<div id="fh5co-gallery-carousel" class="gallery-carousel" data-gallery-dir="images/gallery/" data-gallery-json="images/gallery.json" data-gallery-interval="3500">
+						<div class="gallery-stage">
+							<button class="gallery-btn gallery-prev" type="button" aria-label="Previous photo">
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M15 5L8 12L15 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+								</svg>
+							</button>
+							<div class="gallery-frame">
+								<img class="gallery-image" src="" alt="Gallery photo">
+							</div>
+							<button class="gallery-btn gallery-next" type="button" aria-label="Next photo">
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M9 5L16 12L9 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+								</svg>
+							</button>
+							<button class="gallery-btn gallery-play" type="button" aria-label="Start slideshow">
+								<svg class="gallery-icon-play" viewBox="0 0 24 24" aria-hidden="true">
+									<polygon points="8,5 19,12 8,19" fill="currentColor"></polygon>
+								</svg>
+								<svg class="gallery-icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+									<rect x="7" y="5" width="4" height="14" fill="currentColor"></rect>
+									<rect x="13" y="5" width="4" height="14" fill="currentColor"></rect>
+								</svg>
+							</button>
+							<button class="gallery-btn gallery-fullscreen" type="button" aria-label="Enter full screen">
+								<svg viewBox="0 0 24 24" aria-hidden="true">
+									<path d="M8 4H4V8M20 8V4H16M4 16V20H8M16 20H20V16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+								</svg>
+							</button>
+						</div>
+						<div class="gallery-thumbs" role="tablist" aria-label="Gallery thumbnails"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -316,7 +332,7 @@
 									<div class="event-venue-box animate-box">
 										<i class="icon-location2"></i>
 										<h3>Bride Address</h3>
-										<p><a class="map-link" href="https://maps.app.goo.gl/i3V48PJbntkf3iG67" target="_blank" rel="noopener">Open in Google Maps</a></p>
+										<p><a class="map-link" href="https://maps.app.goo.gl/i3V48PJbntkf3iG67" target="_blank" rel="noopener">Gulab bagh, Near Oswal School, Alwar (Raj.)</a></p>
 									</div>
 								</div>
 							</div>
@@ -369,7 +385,7 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/magnific-popup-options.js"></script>
 	<script src="js/audio.js"></script>
-	<script src="js/gallery.js"></script>
+	<script src="js/gallery.js?v=2"></script>
 	<script src="js/sections.js"></script>
 
 	<!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->

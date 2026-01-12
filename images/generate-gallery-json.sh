@@ -2,12 +2,13 @@
 
 GALLERY_DIR="gallery"
 OUTPUT_FILE="./gallery.json"
+shopt -s nullglob
 
 # Start JSON array
 echo "[" > "$OUTPUT_FILE"
 
 # Get list of files
-files=("$GALLERY_DIR"/*)
+files=("$GALLERY_DIR"/*.webp)
 count=${#files[@]}
 i=0
 
@@ -26,4 +27,3 @@ done
 echo "]" >> "$OUTPUT_FILE"
 
 echo "gallery.json generated successfully"
-

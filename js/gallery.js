@@ -1,17 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var list = document.getElementById("fh5co-gallery-list");
-  if (!list) {
+  var carousel = document.getElementById("fh5co-gallery-carousel");
+  if (!carousel) {
     return;
   }
 
-  var galleryDir = list.getAttribute("data-gallery-dir") || "images/gallery/";
-  var galleryJson = list.getAttribute("data-gallery-json") || "images/gallery.json";
-  var initialCount = parseInt(list.getAttribute("data-gallery-initial") || "5", 10);
-  if (!initialCount || initialCount < 1) {
-    initialCount = 5;
+  var frameImage = carousel.querySelector(".gallery-image");
+  var thumbs = carousel.querySelector(".gallery-thumbs");
+  var prevBtn = carousel.querySelector(".gallery-prev");
+  var nextBtn = carousel.querySelector(".gallery-next");
+  var playBtn = carousel.querySelector(".gallery-play");
+  var fullscreenBtn = carousel.querySelector(".gallery-fullscreen");
+  if (!frameImage || !thumbs || !prevBtn || !nextBtn || !playBtn || !fullscreenBtn) {
+    return;
   }
 
-  var imagePattern = /\.(png|jpe?g|gif|webp)$/i;
+  var galleryDir = carousel.getAttribute("data-gallery-dir") || "images/gallery/";
+  var galleryJson = carousel.getAttribute("data-gallery-json") || "images/gallery.json";
+  var slideInterval = parseInt(carousel.getAttribute("data-gallery-interval") || "3500", 10);
+  if (!slideInterval || slideInterval < 1000) {
+    slideInterval = 3500;
+  }
+
+  var imagePattern = /\.(webp|png|jpe?g|gif)$/i;
+  var names = [];
+  var currentIndex = 0;
+  var autoplayTimer = null;
 
   var normalizeName = function (href) {
     if (!href) {
@@ -36,39 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return name;
     }
     return galleryDir + name;
-  };
-
-  var initLightbox = function () {
-    if (
-      !window.jQuery ||
-      !window.jQuery.fn ||
-      !window.jQuery.fn.magnificPopup ||
-      list.getAttribute("data-popup-init")
-    ) {
-      return;
-    }
-    window.jQuery(list).magnificPopup({
-      delegate: "a.image-popup",
-      type: "image",
-      removalDelay: 300,
-      mainClass: "mfp-with-zoom",
-      gallery: {
-        enabled: true,
-        navigateByImgClick: true,
-        arrows: true,
-        tPrev: "Previous",
-        tNext: "Next"
-      },
-      zoom: {
-        enabled: true,
-        duration: 300,
-        easing: "ease-in-out",
-        opener: function (openerElement) {
-          return openerElement;
-        }
-      }
-    });
-    list.setAttribute("data-popup-init", "true");
   };
 
   var parseDirectoryListing = function (htmlText) {
@@ -139,77 +119,159 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   };
 
-  var createItem = function (name) {
-    var path = resolvePath(name);
-    var item = document.createElement("li");
-    item.className = "one-third animate-box animated-fast fadeIn";
-    item.style.backgroundImage = "url(" + path + ")";
-
-    var link = document.createElement("a");
-    link.href = path;
-    link.className = "image-popup";
-
-    var summary = document.createElement("div");
-    summary.className = "case-studies-summary";
-
-    link.appendChild(summary);
-    item.appendChild(link);
-
-    return item;
+  var updatePlayState = function (isPlaying) {
+    if (isPlaying) {
+      carousel.classList.add("is-playing");
+      playBtn.setAttribute("aria-label", "Pause slideshow");
+    } else {
+      carousel.classList.remove("is-playing");
+      playBtn.setAttribute("aria-label", "Start slideshow");
+    }
   };
 
-  var createMoreItem = function (names) {
-    var item = document.createElement("li");
-    item.className = "one-third animate-box animated-fast fadeIn gallery-more";
-    item.style.backgroundImage = "url(" + resolvePath(names[0]) + ")";
-
-    var link = document.createElement("a");
-    link.href = "#";
-    link.className = "gallery-more-link";
-    link.setAttribute("aria-label", "Show more photos");
-
-    var summary = document.createElement("div");
-    summary.className = "case-studies-summary";
-
-    var count = document.createElement("span");
-    count.className = "more-count";
-    count.textContent = "+" + names.length;
-
-    var label = document.createElement("span");
-    label.className = "more-label";
-    label.textContent = "More Photos";
-
-    summary.appendChild(count);
-    summary.appendChild(label);
-    link.appendChild(summary);
-    item.appendChild(link);
-
-    link.addEventListener("click", function (event) {
-      event.preventDefault();
-      item.parentNode.removeChild(item);
-      names.forEach(function (name) {
-        list.appendChild(createItem(name));
-      });
-    });
-
-    return item;
+  var startAutoplay = function () {
+    if (autoplayTimer || names.length < 2) {
+      return;
+    }
+    autoplayTimer = setInterval(function () {
+      setActive(currentIndex + 1);
+    }, slideInterval);
+    updatePlayState(true);
   };
 
-  fetchImages().then(function (names) {
-    list.innerHTML = "";
+  var stopAutoplay = function () {
+    if (!autoplayTimer) {
+      return;
+    }
+    clearInterval(autoplayTimer);
+    autoplayTimer = null;
+    updatePlayState(false);
+  };
+
+  var resetAutoplay = function () {
+    if (!autoplayTimer) {
+      return;
+    }
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(function () {
+      setActive(currentIndex + 1);
+    }, slideInterval);
+  };
+
+  var setActive = function (index) {
     if (!names.length) {
       return;
     }
-    var initial = names.slice(0, initialCount);
-    var rest = names.slice(initialCount);
+    if (index < 0) {
+      index = names.length - 1;
+    } else if (index >= names.length) {
+      index = 0;
+    }
+    currentIndex = index;
+    var name = names[currentIndex];
+    frameImage.src = resolvePath(name);
+    frameImage.alt = "Gallery photo " + (currentIndex + 1);
 
-    initial.forEach(function (name) {
-      list.appendChild(createItem(name));
+    var activeThumb = null;
+    thumbs.querySelectorAll(".gallery-thumb").forEach(function (thumb) {
+      var thumbIndex = parseInt(thumb.getAttribute("data-index"), 10);
+      if (thumbIndex === currentIndex) {
+        thumb.classList.add("is-active");
+        activeThumb = thumb;
+      } else {
+        thumb.classList.remove("is-active");
+      }
     });
 
-    if (rest.length) {
-      list.appendChild(createMoreItem(rest));
+    if (activeThumb) {
+      var target =
+        activeThumb.offsetLeft -
+        (thumbs.clientWidth - activeThumb.offsetWidth) / 2;
+      var maxScroll = thumbs.scrollWidth - thumbs.clientWidth;
+      if (target < 0) {
+        target = 0;
+      } else if (target > maxScroll) {
+        target = maxScroll;
+      }
+      if (thumbs.scrollTo) {
+        thumbs.scrollTo({ left: target, behavior: "smooth" });
+      } else {
+        thumbs.scrollLeft = target;
+      }
     }
-    initLightbox();
+  };
+
+  var buildThumbs = function () {
+    thumbs.innerHTML = "";
+    names.forEach(function (name, index) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "gallery-thumb";
+      button.setAttribute("data-index", String(index));
+      button.setAttribute("aria-label", "Show photo " + (index + 1));
+
+      var img = document.createElement("img");
+      img.src = resolvePath(name);
+      img.alt = "";
+      img.loading = "lazy";
+
+      button.appendChild(img);
+      button.addEventListener("click", function () {
+        setActive(index);
+        resetAutoplay();
+      });
+
+      thumbs.appendChild(button);
+    });
+  };
+
+  var updateFullscreenButton = function () {
+    var fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+    var isFullscreen = fullscreenElement === carousel;
+    fullscreenBtn.setAttribute("aria-label", isFullscreen ? "Exit full screen" : "Enter full screen");
+  };
+
+  prevBtn.addEventListener("click", function () {
+    setActive(currentIndex - 1);
+    resetAutoplay();
+  });
+  nextBtn.addEventListener("click", function () {
+    setActive(currentIndex + 1);
+    resetAutoplay();
+  });
+  playBtn.addEventListener("click", function () {
+    if (autoplayTimer) {
+      stopAutoplay();
+    } else {
+      startAutoplay();
+    }
+  });
+  fullscreenBtn.addEventListener("click", function () {
+    var fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+    if (fullscreenElement) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+      return;
+    }
+    if (carousel.requestFullscreen) {
+      carousel.requestFullscreen().catch(function () {});
+    } else if (carousel.webkitRequestFullscreen) {
+      carousel.webkitRequestFullscreen();
+    }
+  });
+  document.addEventListener("fullscreenchange", updateFullscreenButton);
+  document.addEventListener("webkitfullscreenchange", updateFullscreenButton);
+
+  fetchImages().then(function (data) {
+    if (!data.length) {
+      return;
+    }
+    names = data;
+    buildThumbs();
+    setActive(0);
+    updateFullscreenButton();
   });
 });
