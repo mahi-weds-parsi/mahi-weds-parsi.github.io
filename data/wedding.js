@@ -102,6 +102,6 @@ window.WEDDING_DATA = {
     ogg: "audio/background.ogg"
   },
   footer: {
-    text: "Made with ❤️ by Mahi"
+    text: "© 2026 Created by Mahi with lots of ❤️ for Parsi."
   }
 };

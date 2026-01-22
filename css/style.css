@@ -1400,7 +1400,7 @@ form label {
 #fh5co-counter [data-template="hero-quote-source"],
 .fh5co-cover [data-template="hero-quote-source"] {
   font-family: "Sofia Sans Condensed", Arial, sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 2px;
   word-spacing: 6px;
@@ -1424,12 +1424,12 @@ form label {
   #fh5co-header [data-template="hero-quote-text"],
   #fh5co-counter [data-template="hero-quote-text"],
   .fh5co-cover [data-template="hero-quote-text"] {
-    font-size: 24px;
+    font-size: 28px;
   }
   #fh5co-header [data-template="hero-quote-source"],
   #fh5co-counter [data-template="hero-quote-source"],
   .fh5co-cover [data-template="hero-quote-source"] {
-    font-size: 14px;
+    font-size: 16px;
   }
   #fh5co-header [data-template="hero-description"],
   #fh5co-counter [data-template="hero-description"],
@@ -1568,6 +1568,9 @@ form label {
   color: #ffffff !important;
   font-size: 18px !important;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+.flipTimebox {
+  margin-top: 18px;
 }
 @media screen and (max-width: 768px) {
   .flipTimebox .flip-clock-divider .flip-clock-label {
