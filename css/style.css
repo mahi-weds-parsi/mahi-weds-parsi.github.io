@@ -2183,6 +2183,11 @@ form label {
     height: 56px;
   }
 }
+@media screen and (max-width: 768px) {
+  body {
+    padding-bottom: 120px;
+  }
+}
 
 .fh5co-nav-toggle {
   width: 25px;
