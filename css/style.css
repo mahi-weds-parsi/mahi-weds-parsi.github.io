@@ -2481,3 +2481,7 @@ form label {
 }
 
 /*# sourceMappingURL=style.css.map */
+.flipTimebox {
+  display: flex;
+  justify-content: center;
+}
