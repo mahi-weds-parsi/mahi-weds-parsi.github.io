@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var configPath = "config/sections.json";
-  var defaultOrder = ["home", "gallery", "highlights", "groom-events", "bride-events"];
+  var defaultOrder = ["front", "home", "gallery", "highlights", "groom-events", "bride-events"];
 
   var applyOrder = function (order) {
     var resolved = Array.isArray(order) && order.length ? order : defaultOrder;

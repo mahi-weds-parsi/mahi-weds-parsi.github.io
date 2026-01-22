@@ -31,8 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     var isPlaying = !audio.paused;
-    toggleButton.textContent = isPlaying ? "Music On" : "Music Off";
+    toggleButton.classList.toggle("is-playing", isPlaying);
     toggleButton.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+    toggleButton.setAttribute("aria-label", isPlaying ? "Music On" : "Music Off");
+    toggleButton.setAttribute("title", isPlaying ? "Music On" : "Music Off");
   };
 
   var startPlayback = function () {

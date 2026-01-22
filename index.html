@@ -69,6 +69,31 @@
 	
 	<div id="page">
 
+	<section id="fh5co-front" class="fh5co-cover fh5co-front" role="banner" style="background-image:url('');" data-stellar-background-ratio="0.5" data-section="front">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<div class="front-mark" aria-hidden="true">
+								<svg viewBox="0 0 120 60" focusable="false" aria-hidden="true">
+									<circle cx="45" cy="30" r="18" fill="none" stroke="currentColor" stroke-width="4"></circle>
+									<circle cx="75" cy="30" r="18" fill="none" stroke="currentColor" stroke-width="4"></circle>
+									<path d="M75 10l6 6-6 6-6-6z" fill="currentColor"></path>
+								</svg>
+							</div>
+							<p class="front-kicker" data-template="front-kicker"></p>
+							<h1 class="front-names" data-template="front-names"></h1>
+							<p class="front-date" data-template="front-date"></p>
+							<p class="front-description" data-template="front-description"></p>
+							<a class="front-cta" href="#fh5co-header" data-front-cta data-template="front-cta"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url('');" data-stellar-background-ratio="0.5" data-section="home">
 		<div class="overlay"></div>
@@ -236,7 +261,20 @@
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
-	<button class="music-toggle" type="button" data-audio-toggle aria-pressed="false">Music Off</button>
+	<button class="music-toggle" type="button" data-audio-toggle aria-pressed="false" aria-label="Music Off">
+		<svg class="music-icon music-icon-on" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+			<circle cx="32" cy="32" r="30" fill="#f3a6d7"/>
+			<circle cx="22" cy="18" r="14" fill="#ffd1eb" opacity="0.6"/>
+			<path fill="#ffffff" d="M38 16v24.8c0 3.5-2.9 6.4-6.4 6.4s-6.4-2.9-6.4-6.4 2.9-6.4 6.4-6.4c1.5 0 3 .5 4.2 1.4V20l17-3.8v19.6c0 3.5-2.9 6.4-6.4 6.4S40 39.3 40 35.8 42.9 29.4 46.4 29.4c1.5 0 3 .5 4.2 1.4V16.8L38 19.3z"/>
+		</svg>
+		<svg class="music-icon music-icon-off" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+			<circle cx="32" cy="32" r="30" fill="#f3a6d7"/>
+			<circle cx="22" cy="18" r="14" fill="#ffd1eb" opacity="0.6"/>
+			<path fill="#ffffff" d="M38 16v24.8c0 3.5-2.9 6.4-6.4 6.4s-6.4-2.9-6.4-6.4 2.9-6.4 6.4-6.4c1.5 0 3 .5 4.2 1.4V20l17-3.8v19.6c0 3.5-2.9 6.4-6.4 6.4S40 39.3 40 35.8 42.9 29.4 46.4 29.4c1.5 0 3 .5 4.2 1.4V16.8L38 19.3z"/>
+			<circle cx="32" cy="32" r="28" fill="none" stroke="#e53935" stroke-width="4"/>
+			<line x1="16" y1="16" x2="48" y2="48" stroke="#e53935" stroke-width="5" stroke-linecap="round"/>
+		</svg>
+	</button>
 
 	<div id="saveDateModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="saveDateLabel">
 		<div class="modal-dialog modal-sm" role="document">

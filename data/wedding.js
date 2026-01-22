@@ -1,7 +1,7 @@
 window.WEDDING_DATA = {
   site: {
     title: "Mahi ❤️ Parsi",
-    description: "आओ पधारो अलवर, राजस्थान—प्यार, हंसी और साथ की खुशियों की इस मंगल घड़ी में हमारे संग उत्सव मनाओ।",
+    description: "पधारो सा… प्रेम और संस्कारों से सजे इस शुभ अवसर पर,\nहम आपको सादर आमंत्रित करते हैं।🙏🏻",
     keywords: ["mahi", "parsi", "wedding", "alwar", "invitation"],
     author: "Mahi & Parsi",
     url: "https://mahi-weds-parsi.github.io",
@@ -11,16 +11,24 @@ window.WEDDING_DATA = {
     ogImageType: "image/jpeg"
   },
   hero: {
-    title: "Mahi weds Parsi",
+    title: "Mahipal weds Parsi",
     dateDisplay: "19.02.2026",
     quoteText: "\"I have found the one whom my soul loves.\"",
     quoteSource: "Song of Solomon 3:4",
-    description: "पधारो सा… प्रेम और संस्कारों से सजे इस शुभ अवसर पर,\nहम आपको सादर आमंत्रित करते हैं।🙏🏻",
+    description: "",
     backgroundImage: "images/bg.webp",
     fingerprintImage: "images/fprint.png",
     fingerprintAlt: "Mahi + Parsi",
     countdownTarget: "2026-02-19 23:00",
     countdownTimezone: "Asia/Kolkata"
+  },
+  front: {
+    kicker: "The Wedding of",
+    names: "Mahipal & Parsi",
+    date: "",
+    description: "पधारो सा… प्रेम और संस्कारों से सजे इस शुभ अवसर पर,\nहम आपको सादर आमंत्रित करते हैं।🙏🏻",
+    backgroundImage: "images/Hawa_mehal.jpg",
+    ctaText: "मुख्य पेज देखें"
   },
   gallery: {
     title: "Gallery",

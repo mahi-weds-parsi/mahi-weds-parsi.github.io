@@ -186,6 +186,7 @@
   onReady(function () {
     var site = data.site || {};
     var hero = data.hero || {};
+    var front = data.front || {};
     var gallery = data.gallery || {};
     var highlights = data.highlights || {};
     var groom = data.groomEvents || {};
@@ -231,6 +232,27 @@
 
     var header = document.getElementById("fh5co-header");
     setBackground(header, hero.backgroundImage);
+
+    var frontSection = document.getElementById("fh5co-front");
+    setBackground(frontSection, front.backgroundImage);
+    setText('[data-template="front-kicker"]', front.kicker);
+    setText('[data-template="front-names"]', front.names);
+    setText('[data-template="front-date"]', front.date);
+    setText('[data-template="front-description"]', front.description);
+    setText('[data-template="front-cta"]', front.ctaText);
+
+    var frontCta = document.querySelector("[data-front-cta]");
+    if (frontCta) {
+      frontCta.addEventListener("click", function (event) {
+        event.preventDefault();
+        var target = document.getElementById("fh5co-header") || document.querySelector('[data-section="home"]');
+        if (target && target.scrollIntoView) {
+          target.scrollIntoView({ behavior: "smooth" });
+        } else {
+          window.location.hash = "#fh5co-header";
+        }
+      });
+    }
 
     setText('[data-template="gallery-title"]', gallery.title);
     var galleryCarousel = document.getElementById("fh5co-gallery-carousel");
