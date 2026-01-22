@@ -1392,7 +1392,7 @@ form label {
 #fh5co-counter [data-template="hero-quote-text"],
 .fh5co-cover [data-template="hero-quote-text"] {
   font-family: "Sacramento", cursive;
-  font-size: 32px;
+  font-size: 38px;
   font-weight: 400;
   letter-spacing: 0.5px;
 }
@@ -1569,9 +1569,9 @@ form label {
   font-size: 18px !important;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 }
-.flipTimebox {
+/* .flipTimebox {
   margin-top: 18px;
-}
+} */
 @media screen and (max-width: 768px) {
   .flipTimebox .flip-clock-divider .flip-clock-label {
     font-size: 16px !important;
