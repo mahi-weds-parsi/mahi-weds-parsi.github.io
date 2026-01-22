@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var names = [];
   var currentIndex = 0;
   var autoplayTimer = null;
+  var fadeTimeout = null;
+  var fadeHandler = null;
+  var fadeDuration = 600;
 
   var normalizeName = function (href) {
     if (!href) {
@@ -169,8 +172,71 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     currentIndex = index;
     var name = names[currentIndex];
-    frameImage.src = resolvePath(name);
-    frameImage.alt = "Gallery photo " + (currentIndex + 1);
+    var nextSrc = resolvePath(name);
+    var altText = "Gallery photo " + (currentIndex + 1);
+    var currentSrc = frameImage.getAttribute("src") || "";
+
+    if (!nextSrc) {
+      return;
+    }
+
+    if (!currentSrc) {
+      frameImage.alt = altText;
+      frameImage.setAttribute("src", nextSrc);
+      frameImage.classList.remove("is-fading");
+    } else if (currentSrc === nextSrc) {
+      frameImage.alt = altText;
+      frameImage.classList.remove("is-fading");
+    } else {
+      if (fadeTimeout) {
+        clearTimeout(fadeTimeout);
+      }
+      if (fadeHandler) {
+        frameImage.removeEventListener("transitionend", fadeHandler);
+      }
+
+      var swapImage = function () {
+        if (swapImage.done) {
+          return;
+        }
+        swapImage.done = true;
+        if (fadeHandler) {
+          frameImage.removeEventListener("transitionend", fadeHandler);
+          fadeHandler = null;
+        }
+        if (fadeTimeout) {
+          clearTimeout(fadeTimeout);
+          fadeTimeout = null;
+        }
+        frameImage.onload = function () {
+          frameImage.classList.remove("is-fading");
+        };
+        frameImage.onerror = function () {
+          frameImage.classList.remove("is-fading");
+        };
+        frameImage.alt = altText;
+        frameImage.setAttribute("src", nextSrc);
+
+        if (frameImage.complete) {
+          window.requestAnimationFrame(function () {
+            frameImage.classList.remove("is-fading");
+          });
+        }
+      };
+
+      fadeHandler = function (event) {
+        if (event && event.propertyName && event.propertyName !== "opacity") {
+          return;
+        }
+        swapImage();
+      };
+
+      frameImage.addEventListener("transitionend", fadeHandler);
+      fadeTimeout = setTimeout(swapImage, fadeDuration + 80);
+      frameImage.classList.remove("is-fading");
+      frameImage.offsetWidth;
+      frameImage.classList.add("is-fading");
+    }
 
     var activeThumb = null;
     thumbs.querySelectorAll(".gallery-thumb").forEach(function (thumb) {

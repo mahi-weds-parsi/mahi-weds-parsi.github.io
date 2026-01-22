@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   var audio = document.getElementById("background-audio");
+  var toggleButton = document.querySelector("[data-audio-toggle]");
 
   if (!audio) {
+    if (toggleButton) {
+      toggleButton.style.display = "none";
+    }
     return;
   }
 
@@ -22,6 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  var updateToggle = function () {
+    if (!toggleButton) {
+      return;
+    }
+    var isPlaying = !audio.paused;
+    toggleButton.textContent = isPlaying ? "Music On" : "Music Off";
+    toggleButton.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+  };
+
   var startPlayback = function () {
     if (hasUserStarted) {
       return;
@@ -40,7 +53,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  document.addEventListener("click", startPlayback, { once: true });
-  document.addEventListener("touchstart", startPlayback, { once: true });
-  document.addEventListener("keydown", startPlayback, { once: true });
+  ["pointerdown", "click", "touchstart", "keydown"].forEach(function (eventName) {
+    document.addEventListener(eventName, startPlayback, { once: true, capture: true });
+  });
+
+  if (toggleButton) {
+    toggleButton.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (audio.paused) {
+        if (!hasUserStarted) {
+          startPlayback();
+        } else {
+          tryPlay();
+        }
+      } else {
+        audio.pause();
+      }
+    });
+  }
+
+  audio.addEventListener("play", updateToggle);
+  audio.addEventListener("pause", updateToggle);
+  updateToggle();
 });

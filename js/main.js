@@ -215,12 +215,16 @@
 
 	
 	$(function(){
+		var hasNav = $('.fh5co-nav, .menu-1 > ul, .menu-2 > ul').length > 0;
+
 		mobileMenuOutsideClick();
 		parallax();
-		offcanvasMenu();
-		burgerMenu();
+		if (hasNav) {
+			offcanvasMenu();
+			burgerMenu();
+			dropdown();
+		}
 		contentWayPoint();
-		dropdown();
 		testimonialCarousel();
 		goToTop();
 		loaderPage();
