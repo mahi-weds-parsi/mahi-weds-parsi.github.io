@@ -1,7 +1,7 @@
 window.WEDDING_DATA = {
   site: {
     title: "Mahi ❤️ Parsi",
-    description: "Join us in Alwar, Rajasthan for a joyful celebration of love, laughter, and togetherness.",
+    description: "आओ पधारो अलवर, राजस्थान—प्यार, हंसी और साथ की खुशियों की इस मंगल घड़ी में हमारे संग उत्सव मनाओ।",
     keywords: ["mahi", "parsi", "wedding", "alwar", "invitation"],
     author: "Mahi & Parsi",
     url: "https://mahi-weds-parsi.github.io",
@@ -15,7 +15,7 @@ window.WEDDING_DATA = {
     dateDisplay: "19.02.2026",
     quoteText: "\"I have found the one whom my soul loves.\"",
     quoteSource: "Song of Solomon 3:4",
-    description: "Join us in Alwar, Rajasthan for a joyful celebration of love, laughter, and togetherness.",
+    description: "पधारो सा… प्रेम और संस्कारों से सजे इस शुभ अवसर पर,\nहम आपको सादर आमंत्रित करते हैं।🙏🏻",
     backgroundImage: "images/bg.webp",
     fingerprintImage: "images/fprint.png",
     fingerprintAlt: "Mahi + Parsi",

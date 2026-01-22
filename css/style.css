@@ -1295,11 +1295,50 @@ form label {
   margin-top: 20px;
   font-family: Engagement;
 }
+#fh5co-header [data-template="hero-quote-text"],
+#fh5co-counter [data-template="hero-quote-text"],
+.fh5co-cover [data-template="hero-quote-text"] {
+  font-family: "Sacramento", cursive;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+#fh5co-header [data-template="hero-quote-source"],
+#fh5co-counter [data-template="hero-quote-source"],
+.fh5co-cover [data-template="hero-quote-source"] {
+  font-family: "Sofia Sans Condensed", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  word-spacing: 6px;
+  text-transform: uppercase;
+}
+#fh5co-header [data-template="hero-description"],
+#fh5co-counter [data-template="hero-description"],
+.fh5co-cover [data-template="hero-description"] {
+  white-space: pre-line;
+  word-spacing: 2px;
+}
 @media screen and (max-width: 480px) {
   #fh5co-header .display-tc h2,
   #fh5co-counter .display-tc h2,
   .fh5co-cover .display-tc h2 {
     font-size: 20px;
+  }
+  #fh5co-header [data-template="hero-quote-text"],
+  #fh5co-counter [data-template="hero-quote-text"],
+  .fh5co-cover [data-template="hero-quote-text"] {
+    font-size: 24px;
+  }
+  #fh5co-header [data-template="hero-quote-source"],
+  #fh5co-counter [data-template="hero-quote-source"],
+  .fh5co-cover [data-template="hero-quote-source"] {
+    font-size: 14px;
+  }
+  #fh5co-header [data-template="hero-description"],
+  #fh5co-counter [data-template="hero-description"],
+  .fh5co-cover [data-template="hero-description"] {
+    word-spacing: 1px;
   }
 }
 #fh5co-header .display-tc h1,
