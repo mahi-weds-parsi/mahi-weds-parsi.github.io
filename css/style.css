@@ -376,12 +376,12 @@ h1, h2, h3, h4, h5, h6, figure {
   height: 100vh;
 }
 .fh5co-front .overlay {
-  background: rgba(5, 5, 5, 7);
+  background: rgba(5, 5, 5, 0.9);
 }
 .fh5co-front .display-tc {
   padding-top: 0;
   position: relative;
-  padding-bottom: 140px;
+  padding-bottom: 200px;
 }
 .front-mark {
   color: #ffffff;
@@ -450,8 +450,9 @@ h1, h2, h3, h4, h5, h6, figure {
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   position: absolute;
   left: 50%;
-  bottom: 40px;
+  bottom: 24px;
   transform: translateX(-50%);
+  z-index: 2;
 }
 .front-cta:hover,
 .front-cta:focus {
@@ -1487,10 +1488,10 @@ form label {
   .front-cta {
     font-size: 18px;
     padding: 12px 26px;
-    bottom: 24px;
+    bottom: 18px;
   }
   .fh5co-front .display-tc {
-    padding-bottom: 110px;
+    padding-bottom: 150px;
   }
 }
 #fh5co-header .display-tc h1,
@@ -1525,10 +1526,10 @@ form label {
     font-size: 20px;
   }
   .fh5co-front .display-tc {
-    padding-bottom: 120px;
+    padding-bottom: 170px;
   }
   .front-cta {
-    bottom: 28px;
+    bottom: 20px;
   }
   .front-kicker {
     font-size: 18px;
@@ -1549,10 +1550,10 @@ form label {
   .front-cta {
     font-size: 16px;
     padding: 10px 22px;
-    bottom: 22px;
+    bottom: 18px;
   }
   .fh5co-front .display-tc {
-    padding-bottom: 100px;
+    padding-bottom: 150px;
   }
 }
 #fh5co-header .display-tc .btn,
