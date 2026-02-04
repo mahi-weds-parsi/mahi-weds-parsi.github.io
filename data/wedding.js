@@ -47,12 +47,16 @@ window.WEDDING_DATA = {
     addressText: "Maghau, Sankhu Fort, Rajgarh, Churu, Raj.",
     addressUrl: "https://maps.app.goo.gl/QDTBjtB4HzavTghUA",
     events: [
-      { name: "Lagan", date: "13 Feb 2026", time: "3:00 PM", venue: "At our Residence" },
-      { name: "Baan", date: "14 Feb 2026", time: "2:00 PM", venue: "At our Residence" },
-      { name: "Banori", date: "14 Feb 2026", time: "9:00 PM", venue: "At our Residence" },
-      { name: "Mahila Sangeet", date: "16 Feb 2026", time: "9:00 PM", venue: "At our Residence" },
-      { name: "Chak bhaat, Mail, Nikashi", date: "18 Feb 2026", time: "12:00 PM - Full Day", venue: "At our Residence" },
-      { name: "Baraat Nikas", date: "19 Feb 2026", time: "9:00 AM", venue: "At our Residence" }
+      { name: "Lagan", date: "13 Feb 2026", time: "03:15 PM", venue: "At our Residence" },
+      { name: "Baan", date: "14 Feb 2026", time: "04:15 PM", venue: "At our Residence" },
+      { name: "Banori", date: "14 Feb 2026", time: "09:15 PM", venue: "At our Residence" },
+      { name: "Mahila Sangeet", date: "16 Feb 2026", time: "08:15 PM", venue: "At our Residence" },
+      { name: "Chak bhaat", date: "18 Feb 2026", time: "01:15 PM", venue: "At our Residence" },
+      { name: "Mail", date: "18 Feb 2026", time: "11:15 AM ..", venue: "At our Residence" },
+      { name: "Nikashi", date: "18 Feb 2026", time: "08:15 PM", venue: "At our Residence" },
+      { name: "Baraat Nikas", date: "19 Feb 2026", time: "10:15 AM", venue: "At our Residence" },
+      { name: "Bride’s Arrival", date: "20 Feb 2026", time: "Early Morning", venue: "At our Residence" },
+
     ]
   },
   brideEvents: {
